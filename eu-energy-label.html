@@ -1,0 +1,295 @@
+<template id="eu-energy-label-template">
+  <style>
+    :host {
+      --efficiency-class-box-base-width: 4em;
+      --efficiency-class-box-height: 2em;
+      --efficiency-class-box-height-half: calc(var(--efficiency-class-box-height) / 2);
+      --efficiency-class-box-margin: 0.5em;
+
+      --efficiency-class-box-bgcolor-app: #009036;
+      --efficiency-class-box-bgcolor-ap:  #58AB27;
+      --efficiency-class-box-bgcolor-a:   #B1C800;
+      --efficiency-class-box-bgcolor-b:   #FFEC00;
+      --efficiency-class-box-bgcolor-c:   #FECC00;
+      --efficiency-class-box-bgcolor-d:   #F29400;
+      --efficiency-class-box-bgcolor-e:   #E2001A;
+      --efficiency-class-box-bgcolor-f:   #B50317;
+      --efficiency-class-box-bgcolor-g:   #A30215;
+
+      --efficiency-class-box-label-margin: 0 0 0 1em;
+      --efficiency-class-box-label-font-family: sans-serif;
+      --efficiency-class-box-label-color: black;
+
+      --selected-efficiency-box-width: 4em;
+      --selected-efficiency-box-height: 3em;
+      --selected-efficiency-box-height-half: calc(var(--selected-efficiency-box-height) / 2);
+      --selected-efficiency-box-margin: 0.5em;
+      --selected-efficiency-box-bgcolor: #ccc;
+
+      --selected-efficiency-box-label-margin: 0 1em 0 0;
+      --selected-efficiency-box-label-font-family: sans-serif;
+      --selected-efficiency-box-label-color: black;
+
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      font-family: var(--efficiency-class-box-label-font-family);
+      color: var(--efficiency-class-box-label-color);
+      line-height: var(--efficiency-class-box-height);
+    }
+
+    .efficiency-class-box {
+      position: relative;
+      height: var(--efficiency-class-box-height);
+      margin: var(--efficiency-class-box-margin);
+    }
+
+    .efficiency-class-box:after {
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      margin-top: calc(var(--efficiency-class-box-height-half) * -1);
+      content: " ";
+      border: solid transparent;
+      border-width: var(--efficiency-class-box-height-half);
+      pointer-events: none;
+    }
+
+    .efficiency-class-box span {
+      margin: var(--efficiency-class-box-label-margin);
+    }
+
+    #efficiency-class-app {
+      width: var(--efficiency-class-box-base-width);
+      background: var(--efficiency-class-box-bgcolor-app);
+    }
+
+    #efficiency-class-app:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-app);
+    }
+
+    #efficiency-class-ap {
+      width: calc(var(--efficiency-class-box-base-width) + (1 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-ap);
+    }
+
+    #efficiency-class-ap:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-ap);
+    }
+
+    #efficiency-class-a {
+      width: calc(var(--efficiency-class-box-base-width) + (2 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-a);
+    }
+
+    #efficiency-class-a:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-a);
+    }
+
+    #efficiency-class-b {
+      width: calc(var(--efficiency-class-box-base-width) + (3 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-b);
+    }
+
+    #efficiency-class-b:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-b);
+    }
+
+    #efficiency-class-c {
+      width: calc(var(--efficiency-class-box-base-width) + (4 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-c);
+    }
+
+    #efficiency-class-c:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-c);
+    }
+
+    #efficiency-class-d {
+      width: calc(var(--efficiency-class-box-base-width) + (5 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-d);
+    }
+
+    #efficiency-class-d:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-d);
+    }
+
+    #efficiency-class-e {
+      width: calc(var(--efficiency-class-box-base-width) + (6 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-e);
+    }
+
+    #efficiency-class-e:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-e);
+    }
+
+    #efficiency-class-f {
+      width: calc(var(--efficiency-class-box-base-width) + (7 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-f);
+    }
+
+    #efficiency-class-f:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-f);
+    }
+
+    #efficiency-class-g {
+      width: calc(var(--efficiency-class-box-base-width) + (8 * var(--efficiency-class-box-height-half)));
+      background: var(--efficiency-class-box-bgcolor-g);
+    }
+
+    #efficiency-class-g:after {
+      border-left-color: var(--efficiency-class-box-bgcolor-g);
+    }
+
+    .selected-efficiency-box {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: var(--selected-efficiency-box-width);
+      height: var(--selected-efficiency-box-height);
+      margin: var(--selected-efficiency-box-margin);
+      line-height: var(--selected-efficiency-box-height);
+      font-family: var(--selected-efficiency-box-label-font-family);
+      text-align: right;
+      color: var(--selected-efficiency-box-label-color);
+      background: var(--selected-efficiency-box-bgcolor);
+    }
+
+    .selected-efficiency-box:after {
+      display: none;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      margin-top: calc(var(--selected-efficiency-box-height-half) * -1);
+      content: " ";
+      border: solid transparent;
+      border-width: var(--selected-efficiency-box-height-half);
+      border-right-color: var(--selected-efficiency-box-bgcolor);
+      pointer-events: none;
+    }
+
+    .selected-efficiency-box span {
+      margin: var(--selected-efficiency-box-label-margin);
+    }
+
+    #selected-efficiency-app {
+      top: calc(var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-ap {
+      top: calc((1 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-a {
+      top: calc((2 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-b {
+      top: calc((3 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-c {
+      top: calc((4 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-d {
+      top: calc((5 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-e {
+      top: calc((6 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-f {
+      top: calc((7 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #selected-efficiency-g {
+      top: calc((8 * (var(--efficiency-class-box-margin) + var(--efficiency-class-box-height))) + var(--efficiency-class-box-height-half) - var(--selected-efficiency-box-height-half));
+    }
+
+    #container.app #selected-efficiency-app,
+    #container.ap #selected-efficiency-ap,
+    #container.a #selected-efficiency-a,
+    #container.b #selected-efficiency-b,
+    #container.c #selected-efficiency-c,
+    #container.d #selected-efficiency-d,
+    #container.e #selected-efficiency-e,
+    #container.f #selected-efficiency-f,
+    #container.g #selected-efficiency-g {
+      display: block;
+    }
+
+    #container.app #selected-efficiency-app:after,
+    #container.ap #selected-efficiency-ap:after,
+    #container.a #selected-efficiency-a:after,
+    #container.b #selected-efficiency-b:after,
+    #container.c #selected-efficiency-c:after,
+    #container.d #selected-efficiency-d:after,
+    #container.e #selected-efficiency-e:after,
+    #container.f #selected-efficiency-f:after,
+    #container.g #selected-efficiency-g:after {
+      display: block;
+    }
+
+
+  </style>
+  <div id="container">
+    <div id="efficiency-class-app" class="efficiency-class-box"><span>A++</span></div>
+    <div id="efficiency-class-ap" class="efficiency-class-box"><span>A+</span></div>
+    <div id="efficiency-class-a" class="efficiency-class-box"><span>A</span></div>
+    <div id="efficiency-class-b" class="efficiency-class-box"><span>B</span></div>
+    <div id="efficiency-class-c" class="efficiency-class-box"><span>C</span></div>
+    <div id="efficiency-class-d" class="efficiency-class-box"><span>D</span></div>
+    <div id="efficiency-class-e" class="efficiency-class-box"><span>E</span></div>
+    <div id="efficiency-class-f" class="efficiency-class-box"><span>F</span></div>
+    <div id="efficiency-class-g" class="efficiency-class-box"><span>G</span></div>
+    <div id="selected-efficiency-app" class="selected-efficiency-box"><span>A++</span></div>
+    <div id="selected-efficiency-ap" class="selected-efficiency-box"><span>A+</span></div>
+    <div id="selected-efficiency-a" class="selected-efficiency-box"><span>A</span></div>
+    <div id="selected-efficiency-b" class="selected-efficiency-box"><span>B</span></div>
+    <div id="selected-efficiency-c" class="selected-efficiency-box"><span>C</span></div>
+    <div id="selected-efficiency-d" class="selected-efficiency-box"><span>D</span></div>
+    <div id="selected-efficiency-e" class="selected-efficiency-box"><span>E</span></div>
+    <div id="selected-efficiency-f" class="selected-efficiency-box"><span>F</span></div>
+    <div id="selected-efficiency-g" class="selected-efficiency-box"><span>G</span></div>
+  </div>
+  </template>
+
+<script>
+  window.customElements.define('eu-energy-label', class extends HTMLElement {
+    constructor() {
+      super();
+
+      const shadowRoot = this.attachShadow({mode: 'open'});
+      const currentDocument = document.currentScript.ownerDocument;
+      const template = currentDocument.querySelector('#eu-energy-label-template');
+      const instance = template.content.cloneNode(true);
+      shadowRoot.appendChild(instance);
+    }
+
+    static get observedAttributes() {
+      return ['efficiency-class'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (name === 'efficiency-class') {
+        const efficiencyClass = newValue.toLowerCase();
+        this.shadowRoot.getElementById("container").className = efficiencyClass;
+      }
+    }
+
+    set efficiencyClass(newClass) {
+      this.setAttribute('efficiency-class', newClass);
+    }
+
+    get efficiencyClass() {
+      return this.getAttribute('efficiency-class');
+    }
+  });
+</script>

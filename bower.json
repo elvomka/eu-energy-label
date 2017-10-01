@@ -1,0 +1,28 @@
+{
+  "name": "eu-energy-label",
+  "homepage": "https://github.com/elvomka/eu-energy-label",
+  "authors": [
+    "elvomka <lkdeatour-github@yahoo.de>"
+  ],
+  "description": "A Web Component to show an EU Energy Label",
+  "main": "eu-energy-label.html",
+  "keywords": [
+    "web-component",
+    "eu",
+    "energy",
+    "label"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "devDependencies": {
+    "web-component-tester": "^6.2.0",
+    "webcomponentsjs": "^1.0.14"
+  },
+  "dependencies": {
+  }
+}
