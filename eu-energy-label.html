@@ -20,18 +20,22 @@
 
       /* Available efficiency classes (on the left) */
       --efficiency-class-base-width: 4em;
-      --efficiency-class-height: 2em;
-      --efficiency-class-margin-top: 0.5em;
+      --efficiency-class-height: 20px;
+      --efficiency-class-margin-top: 7px;
 
-      --efficiency-class-label-margin: 0 0 0 1em;
+      --efficiency-class-label-margin: 0 0 0 0.5em;
       --efficiency-class-label-font-family: sans-serif;
+      --efficiency-class-label-font-size: 12px;
+      --efficiency-class-label-font-weight: bold;
       --efficiency-class-label-color: black;
 
       /* Selected efficiency class (on the right) */
-      --selected-efficiency-width: 5em;
-      --selected-efficiency-height: 3em;
+      --selected-efficiency-width: 6em;
+      --selected-efficiency-height: 30px;
       --selected-efficiency-label-margin: 0 1em 0 0;
       --selected-efficiency-label-font-family: sans-serif;
+      --selected-efficiency-label-font-size: 18px;
+      --selected-efficiency-label-font-weight: bold;
       --selected-efficiency-label-color: black;
 
 
@@ -42,9 +46,6 @@
       position: relative;
       width: 100%;
       height: 100%;
-      font-family: var(--efficiency-class-label-font-family);
-      color: var(--efficiency-class-label-color);
-      line-height: var(--efficiency-class-height);
       background-color: var(--opaque-background-color);
       pointer-events: none;
     }
@@ -61,6 +62,11 @@
       position: relative;
       height: var(--efficiency-class-height);
       margin-top: var(--efficiency-class-margin-top);
+      line-height: var(--efficiency-class-height);
+      font-family: var(--efficiency-class-label-font-family);
+      font-size: var(--efficiency-class-label-font-size);
+      font-weight: var(--efficiency-class-label-font-weight);
+      color: var(--efficiency-class-label-color);
     }
 
     .efficiency-class:after {
@@ -135,6 +141,8 @@
       margin-top: var(--efficiency-class-margin-top);
       line-height: var(--selected-efficiency-height);
       font-family: var(--selected-efficiency-label-font-family);
+      font-size: var(--selected-efficiency-label-font-size);
+      font-weight: var(--selected-efficiency-label-font-weight);
       text-align: right;
       color: var(--selected-efficiency-label-color);
       background: var(--selected-efficiency-background);
