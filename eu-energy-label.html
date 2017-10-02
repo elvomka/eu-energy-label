@@ -6,6 +6,7 @@
        */
 
       /* Colors for efficiency classes */
+      --opaque-background-color:          white;
       --efficiency-class-background-app:  #009036;
       --efficiency-class-background-ap:   #58ab27;
       --efficiency-class-background-a:    #b1c800;
@@ -27,7 +28,7 @@
       --efficiency-class-label-color: black;
 
       /* Selected efficiency class (on the right) */
-      --selected-efficiency-width: var(--efficiency-class-base-width);
+      --selected-efficiency-width: 5em;
       --selected-efficiency-height: 3em;
       --selected-efficiency-label-margin: 0 1em 0 0;
       --selected-efficiency-label-font-family: sans-serif;
@@ -44,10 +45,12 @@
       font-family: var(--efficiency-class-label-font-family);
       color: var(--efficiency-class-label-color);
       line-height: var(--efficiency-class-height);
+      background-color: var(--opaque-background-color);
+      pointer-events: none;
     }
 
     #container {
-      /* Calculated CSS custom properties */
+      /* Calculated CSS custom properties for efficiency */
       --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
       --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
       --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
@@ -62,15 +65,15 @@
 
     .efficiency-class:after {
       position: absolute;
-      left: 100%;
+      left: calc(100% - var(--efficiency-class-height-half));
       top: 50%;
       width: 0;
       height: 0;
       margin-top: calc(var(--efficiency-class-height-half) * -1);
       content: " ";
-      border: solid transparent;
+      border: solid var(--opaque-background-color);
+      border-left-color: transparent;
       border-width: var(--efficiency-class-height-half);
-      pointer-events: none;
     }
 
     .efficiency-class span {
@@ -83,7 +86,7 @@
     }
 
     #efficiency-class-app:after {
-      border-left-color: var(--efficiency-class-background-app);
+      border-left-color: transparent;
     }
 
     #efficiency-class-ap {
@@ -91,17 +94,9 @@
       background: var(--efficiency-class-background-ap);
     }
 
-    #efficiency-class-ap:after {
-      border-left-color: var(--efficiency-class-background-ap);
-    }
-
     #efficiency-class-a {
       width: calc(var(--efficiency-class-base-width) + (2 * var(--efficiency-class-height-half)));
       background: var(--efficiency-class-background-a);
-    }
-
-    #efficiency-class-a:after {
-      border-left-color: var(--efficiency-class-background-a);
     }
 
     #efficiency-class-b {
@@ -109,17 +104,9 @@
       background: var(--efficiency-class-background-b);
     }
 
-    #efficiency-class-b:after {
-      border-left-color: var(--efficiency-class-background-b);
-    }
-
     #efficiency-class-c {
-      width: calc(var(--efficiency-class-base-width) + (4 * var(--efficiency-class-height-half)));
+        width: calc(var(--efficiency-class-base-width) + (4 * var(--efficiency-class-height-half)));
       background: var(--efficiency-class-background-c);
-    }
-
-    #efficiency-class-c:after {
-      border-left-color: var(--efficiency-class-background-c);
     }
 
     #efficiency-class-d {
@@ -127,17 +114,9 @@
       background: var(--efficiency-class-background-d);
     }
 
-    #efficiency-class-d:after {
-      border-left-color: var(--efficiency-class-background-d);
-    }
-
     #efficiency-class-e {
       width: calc(var(--efficiency-class-base-width) + (6 * var(--efficiency-class-height-half)));
       background: var(--efficiency-class-background-e);
-    }
-
-    #efficiency-class-e:after {
-      border-left-color: var(--efficiency-class-background-e);
     }
 
     #efficiency-class-f {
@@ -145,17 +124,9 @@
       background: var(--efficiency-class-background-f);
     }
 
-    #efficiency-class-f:after {
-      border-left-color: var(--efficiency-class-background-f);
-    }
-
     #efficiency-class-g {
       width: calc(var(--efficiency-class-base-width) + (8 * var(--efficiency-class-height-half)));
       background: var(--efficiency-class-background-g);
-    }
-
-    #efficiency-class-g:after {
-      border-left-color: var(--efficiency-class-background-g);
     }
 
     .selected-efficiency {
@@ -176,16 +147,15 @@
     .selected-efficiency:after {
       display: none;
       position: absolute;
-      right: 100%;
+      right: calc(100% - var(--selected-efficiency-height-half));
       top: 50%;
       width: 0;
       height: 0;
       margin-top: calc(var(--selected-efficiency-height-half) * -1);
       content: " ";
-      border: solid transparent;
+      border: solid var(--opaque-background-color);
       border-width: var(--selected-efficiency-height-half);
-      border-right-color: var(--selected-efficiency-background);
-      pointer-events: none;
+      border-right-color: transparent;
     }
 
     .selected-efficiency span {
@@ -248,9 +218,8 @@
     #container.g #selected-efficiency-g:after {
       display: block;
     }
-
-
   </style>
+
   <div id="container">
     <div id="efficiency-class-app" class="efficiency-class"><span>A++</span></div>
     <div id="efficiency-class-ap" class="efficiency-class"><span>A+</span></div>
@@ -271,7 +240,7 @@
     <div id="selected-efficiency-f" class="selected-efficiency"><span>F</span></div>
     <div id="selected-efficiency-g" class="selected-efficiency"><span>G</span></div>
   </div>
-  </template>
+</template>
 
 <script>
   window.customElements.define('eu-energy-label', class extends HTMLElement {

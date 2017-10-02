@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>eu-energy-label demo</title>
+    <!-- <script src="../../webcomponentsjs/webcomponents-loader.js"></script> -->
+    <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script> <!-- TODO: delete me -->
+
+    <link rel="import" href="../eu-energy-label.html">
+    <style type="text/css">
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      #demo-container {
+        padding: 10px;
+      }
+
+      eu-energy-label {
+        --efficiency-class-background-app: linear-gradient(#1DB153, #009036);
+        --efficiency-class-background-ap:  linear-gradient(#72BA45, #58ab27);
+        --efficiency-class-background-a:   linear-gradient(#CBD193, #b1c800);
+        --efficiency-class-background-b:   linear-gradient(#FFF8A6, #ffec00);
+        --efficiency-class-background-c:   linear-gradient(#FFEDA7, #fecc00);
+        --efficiency-class-background-d:   linear-gradient(#F0C37F, #f29400);
+        --efficiency-class-background-e:   linear-gradient(#DA99A0, #e2001a);
+        --efficiency-class-background-f:   linear-gradient(#AE676F, #b50317);
+        --efficiency-class-background-g:   linear-gradient(#924751, #a30215);
+        --selected-efficiency-background:  linear-gradient(#ddd, #666);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="demo-container">
+      <eu-energy-label efficiency-class="app"></eu-energy-label>
+    </div>
+  </body>
+</html>

@@ -2,13 +2,9 @@
 
 A Web Component to show an EU Energy Label
 
-## Installation
-
-TODO: Describe the installation process
-
 ## Usage
 
-TODO: Write usage instructions
+Please refer to the demo directory for usage examples.
 
 ## Contributing
 
@@ -17,14 +13,6 @@ TODO: Write usage instructions
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## History
-
-TODO: Write history
-
-## Credits
-
-TODO: Write credits
 
 ## License
 
