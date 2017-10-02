@@ -51,6 +51,7 @@
       --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
       --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
       --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
+      --efficiency-class-margin-top-and-height: calc(var(--efficiency-class-margin-top) + var(--efficiency-class-height));
     }
 
     .efficiency-class {
@@ -196,57 +197,54 @@
     }
 
     #selected-efficiency-ap {
-      top: calc((1 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((1 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-a {
-      top: calc((2 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((2 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-b {
-      top: calc((3 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((3 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-c {
-      top: calc((4 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((4 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-d {
-      top: calc((5 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((5 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-e {
-      top: calc((6 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((6 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-f {
-      top: calc((7 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((7 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-g {
-      top: calc((8 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((8 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
     #container.app #selected-efficiency-app,
-    #container.ap #selected-efficiency-ap,
-    #container.a #selected-efficiency-a,
-    #container.b #selected-efficiency-b,
-    #container.c #selected-efficiency-c,
-    #container.d #selected-efficiency-d,
-    #container.e #selected-efficiency-e,
-    #container.f #selected-efficiency-f,
-    #container.g #selected-efficiency-g {
-      display: block;
-    }
-
     #container.app #selected-efficiency-app:after,
+    #container.ap #selected-efficiency-ap,
     #container.ap #selected-efficiency-ap:after,
+    #container.a #selected-efficiency-a,
     #container.a #selected-efficiency-a:after,
+    #container.b #selected-efficiency-b,
     #container.b #selected-efficiency-b:after,
+    #container.c #selected-efficiency-c,
     #container.c #selected-efficiency-c:after,
+    #container.d #selected-efficiency-d,
     #container.d #selected-efficiency-d:after,
+    #container.e #selected-efficiency-e,
     #container.e #selected-efficiency-e:after,
+    #container.f #selected-efficiency-f,
     #container.f #selected-efficiency-f:after,
+    #container.g #selected-efficiency-g,
     #container.g #selected-efficiency-g:after {
       display: block;
     }
@@ -294,7 +292,7 @@
     attributeChangedCallback(name, oldValue, newValue) {
       if (name === 'efficiency-class') {
         const efficiencyClass = newValue.toLowerCase();
-        this.shadowRoot.getElementById("container").className = efficiencyClass;
+        this.shadowRoot.getElementById('container').className = efficiencyClass;
       }
     }
 
