@@ -1,35 +1,42 @@
 <template id="eu-energy-label-template">
   <style>
     :host {
+      /*
+       * CSS custom properties
+       */
+
+      /* Colors for efficiency classes */
+      --efficiency-class-background-app:  #009036;
+      --efficiency-class-background-ap:   #58ab27;
+      --efficiency-class-background-a:    #b1c800;
+      --efficiency-class-background-b:    #ffec00;
+      --efficiency-class-background-c:    #fecc00;
+      --efficiency-class-background-d:    #f29400;
+      --efficiency-class-background-e:    #e2001a;
+      --efficiency-class-background-f:    #b50317;
+      --efficiency-class-background-g:    #a30215;
+      --selected-efficiency-background:   #cccccc;
+
+      /* Available efficiency classes (on the left) */
       --efficiency-class-base-width: 4em;
       --efficiency-class-height: 2em;
-      --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
-      --efficiency-class-margin: 0.5em;
-
-      --efficiency-class-bgcolor-app: #009036;
-      --efficiency-class-bgcolor-ap:  #58AB27;
-      --efficiency-class-bgcolor-a:   #B1C800;
-      --efficiency-class-bgcolor-b:   #FFEC00;
-      --efficiency-class-bgcolor-c:   #FECC00;
-      --efficiency-class-bgcolor-d:   #F29400;
-      --efficiency-class-bgcolor-e:   #E2001A;
-      --efficiency-class-bgcolor-f:   #B50317;
-      --efficiency-class-bgcolor-g:   #A30215;
+      --efficiency-class-margin-top: 0.5em;
 
       --efficiency-class-label-margin: 0 0 0 1em;
       --efficiency-class-label-font-family: sans-serif;
       --efficiency-class-label-color: black;
 
-      --selected-efficiency-width: 4em;
+      /* Selected efficiency class (on the right) */
+      --selected-efficiency-width: var(--efficiency-class-base-width);
       --selected-efficiency-height: 3em;
-      --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
-      --selected-efficiency-margin: 0.5em;
-      --selected-efficiency-bgcolor: #ccc;
-
       --selected-efficiency-label-margin: 0 1em 0 0;
       --selected-efficiency-label-font-family: sans-serif;
       --selected-efficiency-label-color: black;
 
+
+      /*
+       * Web Component :host styles
+       */
       display: inline-block;
       position: relative;
       width: 100%;
@@ -39,10 +46,17 @@
       line-height: var(--efficiency-class-height);
     }
 
+    #container {
+      /* Calculated CSS custom properties */
+      --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
+      --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
+      --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
+    }
+
     .efficiency-class {
       position: relative;
       height: var(--efficiency-class-height);
-      margin: var(--efficiency-class-margin);
+      margin-top: var(--efficiency-class-margin-top);
     }
 
     .efficiency-class:after {
@@ -64,83 +78,83 @@
 
     #efficiency-class-app {
       width: var(--efficiency-class-base-width);
-      background: var(--efficiency-class-bgcolor-app);
+      background: var(--efficiency-class-background-app);
     }
 
     #efficiency-class-app:after {
-      border-left-color: var(--efficiency-class-bgcolor-app);
+      border-left-color: var(--efficiency-class-background-app);
     }
 
     #efficiency-class-ap {
       width: calc(var(--efficiency-class-base-width) + (1 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-ap);
+      background: var(--efficiency-class-background-ap);
     }
 
     #efficiency-class-ap:after {
-      border-left-color: var(--efficiency-class-bgcolor-ap);
+      border-left-color: var(--efficiency-class-background-ap);
     }
 
     #efficiency-class-a {
       width: calc(var(--efficiency-class-base-width) + (2 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-a);
+      background: var(--efficiency-class-background-a);
     }
 
     #efficiency-class-a:after {
-      border-left-color: var(--efficiency-class-bgcolor-a);
+      border-left-color: var(--efficiency-class-background-a);
     }
 
     #efficiency-class-b {
       width: calc(var(--efficiency-class-base-width) + (3 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-b);
+      background: var(--efficiency-class-background-b);
     }
 
     #efficiency-class-b:after {
-      border-left-color: var(--efficiency-class-bgcolor-b);
+      border-left-color: var(--efficiency-class-background-b);
     }
 
     #efficiency-class-c {
       width: calc(var(--efficiency-class-base-width) + (4 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-c);
+      background: var(--efficiency-class-background-c);
     }
 
     #efficiency-class-c:after {
-      border-left-color: var(--efficiency-class-bgcolor-c);
+      border-left-color: var(--efficiency-class-background-c);
     }
 
     #efficiency-class-d {
       width: calc(var(--efficiency-class-base-width) + (5 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-d);
+      background: var(--efficiency-class-background-d);
     }
 
     #efficiency-class-d:after {
-      border-left-color: var(--efficiency-class-bgcolor-d);
+      border-left-color: var(--efficiency-class-background-d);
     }
 
     #efficiency-class-e {
       width: calc(var(--efficiency-class-base-width) + (6 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-e);
+      background: var(--efficiency-class-background-e);
     }
 
     #efficiency-class-e:after {
-      border-left-color: var(--efficiency-class-bgcolor-e);
+      border-left-color: var(--efficiency-class-background-e);
     }
 
     #efficiency-class-f {
       width: calc(var(--efficiency-class-base-width) + (7 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-f);
+      background: var(--efficiency-class-background-f);
     }
 
     #efficiency-class-f:after {
-      border-left-color: var(--efficiency-class-bgcolor-f);
+      border-left-color: var(--efficiency-class-background-f);
     }
 
     #efficiency-class-g {
       width: calc(var(--efficiency-class-base-width) + (8 * var(--efficiency-class-height-half)));
-      background: var(--efficiency-class-bgcolor-g);
+      background: var(--efficiency-class-background-g);
     }
 
     #efficiency-class-g:after {
-      border-left-color: var(--efficiency-class-bgcolor-g);
+      border-left-color: var(--efficiency-class-background-g);
     }
 
     .selected-efficiency {
@@ -150,14 +164,12 @@
       right: 0;
       width: var(--selected-efficiency-width);
       height: var(--selected-efficiency-height);
-      margin: var(--selected-efficiency-margin);
+      margin-top: var(--efficiency-class-margin-top);
       line-height: var(--selected-efficiency-height);
       font-family: var(--selected-efficiency-label-font-family);
       text-align: right;
       color: var(--selected-efficiency-label-color);
-      background: var(--selected-efficiency-bgcolor);
-
-      --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
+      background: var(--selected-efficiency-background);
     }
 
     .selected-efficiency:after {
@@ -171,7 +183,7 @@
       content: " ";
       border: solid transparent;
       border-width: var(--selected-efficiency-height-half);
-      border-right-color: var(--selected-efficiency-bgcolor);
+      border-right-color: var(--selected-efficiency-background);
       pointer-events: none;
     }
 
@@ -184,35 +196,35 @@
     }
 
     #selected-efficiency-ap {
-      top: calc((1 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((1 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-a {
-      top: calc((2 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((2 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-b {
-      top: calc((3 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((3 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-c {
-      top: calc((4 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((4 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-d {
-      top: calc((5 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((5 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-e {
-      top: calc((6 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((6 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-f {
-      top: calc((7 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((7 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #selected-efficiency-g {
-      top: calc((8 * (var(--efficiency-class-margin) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
+      top: calc((8 * (var(--efficiency-class-margin-top) + var(--efficiency-class-height))) + var(--selected-efficiency-height-difference));
     }
 
     #container.app #selected-efficiency-app,
