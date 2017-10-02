@@ -1,27 +1,33 @@
 {
   "extends": ["eslint:recommended", "google"],
-  "parserOptions": {
-    "ecmaVersion": 6
-  },
+  "ecmaVersion": 6,
   "rules": {
+    "indent": ["error", 2],
+    "max-len": [2, {
+      "code": 100,
+      "tabWidth": 2,
+      "ignoreUrls": true
+    }],
     "no-console": "off",
     "no-var": "error",
-    "semi": "error",
     "strict": "error",
-    "valid-jsdoc": ["error", {
-      "requireReturn": false,
-      "prefer": {
-        "arg": "param",
-        "argument": "param",
-        "returns": "return"
-      },
-      "preferType": {
-        "Boolean": "boolean",
-        "Number": "number",
-        "String": "string",
-        "object": "Object"
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturn": false,
+        "prefer": {
+          "arg": "param",
+          "argument": "param",
+          "returns": "return"
+        },
+        "preferType": {
+          "Boolean": "boolean",
+          "Number": "number",
+          "String": "string",
+          "object": "Object"
+        }
       }
-    }]
+    ]
   },
   "env": {
     "browser": true,
