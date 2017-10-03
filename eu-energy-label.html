@@ -6,18 +6,18 @@
        */
 
       /* Colors for efficiency classes */
-      --opaque-background-color:           white;
-      --efficiency-class-background-1:     #009036;
-      --efficiency-class-background-2:     #58ab27;
-      --efficiency-class-background-3:     #b1c800;
-      --efficiency-class-background-4:     #ffec00;
-      --efficiency-class-background-5:     #fecc00;
-      --efficiency-class-background-6:     #f29400;
-      --efficiency-class-background-7:     #e2001a;
-      --efficiency-class-background-8:     #b50317;
-      --efficiency-class-background-9:     #a30215;
-      --efficiency-class-background-other: #49010A;
-      --selected-efficiency-background:    #cccccc;
+      --opaque-background-color:        white;
+      --efficiency-class-background-1:  #009036;
+      --efficiency-class-background-2:  #58ab27;
+      --efficiency-class-background-3:  #b1c800;
+      --efficiency-class-background-4:  #ffec00;
+      --efficiency-class-background-5:  #fecc00;
+      --efficiency-class-background-6:  #f29400;
+      --efficiency-class-background-7:  #e2001a;
+      --efficiency-class-background-8:  #b50317;
+      --efficiency-class-background-9:  #a30215;
+      --efficiency-class-background-10: #49010A;
+      --selected-efficiency-background: #cccccc;
 
       /* Available efficiency classes (on the left) */
       --efficiency-class-base-width: 4em;
@@ -88,7 +88,7 @@
     }
 
     .efficiency-class:nth-of-type(1) {
-      width: calc(var(--efficiency-class-base-width) + (0 * var(--efficiency-class-height-half)));
+      width: var(--efficiency-class-base-width);
       background: var(--efficiency-class-background-1);
     }
 
@@ -132,9 +132,13 @@
       background: var(--efficiency-class-background-9);
     }
 
+    .efficiency-class:nth-of-type(10) {
+      width: calc(var(--efficiency-class-base-width) + (9 * var(--efficiency-class-height-half)));
+      background: var(--efficiency-class-background-10);
+    }
+
     .selected-efficiency {
       position: absolute;
-      display: none;
       top: 0;
       right: 0;
       width: var(--selected-efficiency-width);
@@ -151,7 +155,6 @@
 
     .selected-efficiency:after {
       position: absolute;
-      display: none;
       top: 50%;
       right: calc(100% - var(--selected-efficiency-height-half));
       width: 0;
@@ -167,83 +170,50 @@
       margin: var(--selected-efficiency-label-margin);
     }
 
-    #selected-efficiency-app {
+    .selected-efficiency-1 {
       top: var(--selected-efficiency-height-difference);
     }
 
-    #selected-efficiency-ap {
+    .selected-efficiency-2 {
       top: calc((1 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-a {
+    .selected-efficiency-3 {
       top: calc((2 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-b {
+    .selected-efficiency-4 {
       top: calc((3 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-c {
+    .selected-efficiency-5 {
       top: calc((4 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-d {
+    .selected-efficiency-6 {
       top: calc((5 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-e {
+    .selected-efficiency-7 {
       top: calc((6 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-f {
+    .selected-efficiency-7 {
       top: calc((7 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #selected-efficiency-g {
+    .selected-efficiency-9 {
       top: calc((8 * var(--efficiency-class-margin-top-and-height)) + var(--selected-efficiency-height-difference));
     }
 
-    #container.app #selected-efficiency-app,
-    #container.app #selected-efficiency-app:after,
-    #container.ap #selected-efficiency-ap,
-    #container.ap #selected-efficiency-ap:after,
-    #container.a #selected-efficiency-a,
-    #container.a #selected-efficiency-a:after,
-    #container.b #selected-efficiency-b,
-    #container.b #selected-efficiency-b:after,
-    #container.c #selected-efficiency-c,
-    #container.c #selected-efficiency-c:after,
-    #container.d #selected-efficiency-d,
-    #container.d #selected-efficiency-d:after,
-    #container.e #selected-efficiency-e,
-    #container.e #selected-efficiency-e:after,
-    #container.f #selected-efficiency-f,
-    #container.f #selected-efficiency-f:after,
-    #container.g #selected-efficiency-g,
-    #container.g #selected-efficiency-g:after {
-      display: block;
+    .hidden {
+      display: none;
     }
   </style>
 
   <div id="container">
-    <div class="efficiency-class"><span>A++</span></div>
-    <div class="efficiency-class"><span>A+</span></div>
-    <div class="efficiency-class"><span>A</span></div>
-    <div class="efficiency-class"><span>B</span></div>
-    <div class="efficiency-class"><span>C</span></div>
-    <div class="efficiency-class"><span>D</span></div>
-    <div class="efficiency-class"><span>E</span></div>
-    <div class="efficiency-class"><span>F</span></div>
-    <div class="efficiency-class"><span>G</span></div>
-    <div id="selected-efficiency-app" class="selected-efficiency"><span>A++</span></div>
-    <div id="selected-efficiency-ap" class="selected-efficiency"><span>A+</span></div>
-    <div id="selected-efficiency-a" class="selected-efficiency"><span>A</span></div>
-    <div id="selected-efficiency-b" class="selected-efficiency"><span>B</span></div>
-    <div id="selected-efficiency-c" class="selected-efficiency"><span>C</span></div>
-    <div id="selected-efficiency-d" class="selected-efficiency"><span>D</span></div>
-    <div id="selected-efficiency-e" class="selected-efficiency"><span>E</span></div>
-    <div id="selected-efficiency-f" class="selected-efficiency"><span>F</span></div>
-    <div id="selected-efficiency-g" class="selected-efficiency"><span>G</span></div>
+    <div id="efficiency-class-container"></div>
+    <div id="selected-efficiency"><span></span></div>
   </div>
 </template>
 
@@ -260,22 +230,46 @@
     }
 
     static get observedAttributes() {
-      return ['efficiency-class'];
+      return ['efficiency-classes', 'selected-class'];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-      if (name === 'efficiency-class') {
-        const efficiencyClass = newValue.toLowerCase();
-        this.shadowRoot.getElementById('container').className = efficiencyClass;
+      if (newValue === oldValue) {
+        return;
+      }
+      if (name === 'efficiency-classes') {
+        const html = newValue.split(',').map((efficiencyClass, idx) =>
+          `<div class="efficiency-class"><span>${efficiencyClass.trim()}</span></div>`
+        ).join('');
+        this.shadowRoot.getElementById("efficiency-class-container").innerHTML = html;
+      } else if (name === 'selected-class') {
+        const efficiencyClasses = this.efficiencyClasses.split(',');
+        const pos = efficiencyClasses.indexOf(newValue);
+
+        const selectedElement = this.shadowRoot.getElementById("selected-efficiency");
+        if (pos === -1) {
+          selectedElement.className = 'hidden';
+        } else {
+          selectedElement.className = `selected-efficiency selected-efficiency-${pos + 1}`;
+          selectedElement.firstChild.textContent = newValue;
+        }
       }
     }
 
-    set efficiencyClass(newClass) {
-      this.setAttribute('efficiency-class', newClass);
+    set efficiencyClasses(newClasses) {
+      this.setAttribute('efficiency-classes', newClasses);
     }
 
-    get efficiencyClass() {
-      return this.getAttribute('efficiency-class');
+    get efficiencyClasses() {
+      return this.getAttribute('efficiency-classes');
+    }
+
+    set selectedClass(selectedClass) {
+      this.setAttribute('selected-class', selectedClass);
+    }
+
+    get selectedClass() {
+      return this.getAttribute('selected-class');
     }
   });
 </script>

@@ -20,22 +20,25 @@
       }
 
       eu-energy-label {
-        --efficiency-class-background-app: linear-gradient(#1DB153, #009036);
-        --efficiency-class-background-ap:  linear-gradient(#72BA45, #58ab27);
-        --efficiency-class-background-a:   linear-gradient(#CBD193, #b1c800);
-        --efficiency-class-background-b:   linear-gradient(#FFF8A6, #ffec00);
-        --efficiency-class-background-c:   linear-gradient(#FFEDA7, #fecc00);
-        --efficiency-class-background-d:   linear-gradient(#F0C37F, #f29400);
-        --efficiency-class-background-e:   linear-gradient(#DA99A0, #e2001a);
-        --efficiency-class-background-f:   linear-gradient(#AE676F, #b50317);
-        --efficiency-class-background-g:   linear-gradient(#924751, #a30215);
-        --selected-efficiency-background:  linear-gradient(#eee, #bbb);
+        --efficiency-class-background-1:  linear-gradient(#1DB153, #009036);
+        --efficiency-class-background-2:  linear-gradient(#72BA45, #58ab27);
+        --efficiency-class-background-3:  linear-gradient(#CBD193, #b1c800);
+        --efficiency-class-background-4:  linear-gradient(#FFF8A6, #ffec00);
+        --efficiency-class-background-5:  linear-gradient(#FFEDA7, #fecc00);
+        --efficiency-class-background-6:  linear-gradient(#F0C37F, #f29400);
+        --efficiency-class-background-7:  linear-gradient(#DA99A0, #e2001a);
+        --efficiency-class-background-8:  linear-gradient(#AE676F, #b50317);
+        --efficiency-class-background-9:  linear-gradient(#924751, #a30215);
+        --efficiency-class-background-10: linear-gradient(#50151E, #57000C);
+        --selected-efficiency-background: linear-gradient(#eee, #bbb);
       }
     </style>
   </head>
   <body>
     <div id="demo-container">
-      <eu-energy-label efficiency-class="b"></eu-energy-label>
+      <eu-energy-label efficiency-classes="A+++,A++,A+,A,B,C,D,E,F,G"
+                       selected-class="F">
+      </eu-energy-label>
     </div>
   </body>
 </html>
