@@ -218,9 +218,14 @@
 
 <script>
   window.customElements.define('eu-energy-label', class extends HTMLElement {
+    /**
+     * Constructor to setup a new instance of the web component.
+     *
+     * @constructor
+     * @return {void}
+     */
     constructor() {
       super();
-
       const shadowRoot = this.attachShadow({mode: 'open'});
       const currentDocument = document.currentScript.ownerDocument;
       const template = currentDocument.querySelector('#eu-energy-label-template');
@@ -228,10 +233,25 @@
       shadowRoot.appendChild(instance);
     }
 
+    /**
+     * The attributes to be observed via `attributeChangedCallback`.
+     *
+     * @static
+     * @readonly
+     * @type {Array.<string>}
+     */
     static get observedAttributes() {
       return ['efficiency-classes', 'selected-class'];
     }
 
+    /**
+     * Callback to handle changed attributs, as specified in `observedAttributes`.
+     *
+     * @param {string} name - Name of the attribute
+     * @param {string} oldValue - Previous value of the attribute
+     * @param {string} newValue - New value of the attribute
+     * @return {void}
+     */
     attributeChangedCallback(name, oldValue, newValue) {
       if (newValue === oldValue) {
         return;
@@ -240,33 +260,54 @@
         const html = newValue.split(',').map((efficiencyClass, idx) =>
           `<div class="efficiency-class"><span>${efficiencyClass.trim()}</span></div>`
         ).join('');
-        this.shadowRoot.getElementById("efficiency-class-container").innerHTML = html;
+        this.shadowRoot.getElementById('efficiency-class-container').innerHTML = html;
       } else if (name === 'selected-class') {
         const efficiencyClasses = this.efficiencyClasses.split(',');
-        const pos = efficiencyClasses.indexOf(newValue);
-
-        const selectedElement = this.shadowRoot.getElementById("selected-efficiency");
-        if (pos === -1) {
+        const idx = efficiencyClasses.indexOf(newValue);
+        const selectedElement = this.shadowRoot.getElementById('selected-efficiency');
+        if (idx === -1) {
           selectedElement.className = 'hidden';
         } else {
-          selectedElement.className = `selected-efficiency selected-efficiency-${pos + 1}`;
+          selectedElement.className = `selected-efficiency selected-efficiency-${idx + 1}`;
           selectedElement.firstChild.textContent = newValue;
         }
       }
     }
 
+    /**
+     * Set the efficiency classes as an ordered, comma-separated list. The order is going
+     * from the best efficiency to the worst, e.g. "A+++,A++,A,B,C,D,E,F,G".
+     *
+     * @param {string} newClasses - Comma-separated list of efficiency classes
+     * @return {void}
+     */
     set efficiencyClasses(newClasses) {
       this.setAttribute('efficiency-classes', newClasses);
     }
 
+    /**
+     * Get the comma-separated list of efficiency-classes.
+     * @return {string} - List of efficiency-classes
+     */
     get efficiencyClasses() {
       return this.getAttribute('efficiency-classes');
     }
 
+    /**
+     * Set the selected efficiency class. The class has to be present in the list set by
+     * the `efficiencyClasses` property (or the `efficiency-classes` attribute).
+     *
+     * @param {string} selectedClass - The efficiency class to select
+     * @return {void}
+     */
     set selectedClass(selectedClass) {
       this.setAttribute('selected-class', selectedClass);
     }
 
+    /**
+     * Get the selected efficiency-classe.
+     * @return {string} - Selected efficiency class
+     */
     get selectedClass() {
       return this.getAttribute('selected-class');
     }
