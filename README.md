@@ -4,7 +4,13 @@ A Web Component to show an EU Energy Label
 
 ## Usage
 
-Please refer to the demo directory for usage examples.
+<!-- START-HIDDEN-SECTION: Add imports and styling here. -->
+<script src="../webcomponentsjs/webcomponents-lite.js"></script>
+<link rel="import" href="eu-energy-label.html">
+<!-- END-HIDDEN-SECTION: Add the visible part of the demo below. -->
+<eu-energy-label efficiency-classes="A+++,A++,A+,A,B,C,D,E,F,G"
+                 selected-class="A++">
+</eu-energy-label>
 
 ## Contributing
 
