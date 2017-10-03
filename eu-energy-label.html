@@ -41,6 +41,15 @@
 
 
       /*
+       * Pre-calculated CSS custom properties to avoid redundant calculations.
+       */
+      --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
+      --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
+      --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
+      --efficiency-class-margin-top-and-height: calc(var(--efficiency-class-margin-top) + var(--efficiency-class-height));
+
+
+      /*
        * Web Component :host styles
        */
       position: relative;
@@ -49,14 +58,6 @@
       height: 100%;
       background-color: var(--opaque-background-color);
       pointer-events: none;
-    }
-
-    #container {
-      /* Calculated CSS custom properties for efficiency */
-      --efficiency-class-height-half: calc(var(--efficiency-class-height) / 2);
-      --selected-efficiency-height-half: calc(var(--selected-efficiency-height) / 2);
-      --selected-efficiency-height-difference: calc(var(--efficiency-class-height-half) - var(--selected-efficiency-height-half));
-      --efficiency-class-margin-top-and-height: calc(var(--efficiency-class-margin-top) + var(--efficiency-class-height));
     }
 
     .efficiency-class {
@@ -211,10 +212,8 @@
     }
   </style>
 
-  <div id="container">
-    <div id="efficiency-class-container"></div>
-    <div id="selected-efficiency"><span></span></div>
-  </div>
+  <div id="efficiency-class-container"></div>
+  <div id="selected-efficiency"><span></span></div>
 </template>
 
 <script>

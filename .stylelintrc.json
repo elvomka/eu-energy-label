@@ -1,0 +1,94 @@
+{
+  "extends": "stylelint-config-standard",
+  "processors": [
+    "stylelint-processor-html"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "at-rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "declaration-block-no-ignored-properties": null,
+    "declaration-empty-line-before": null,
+    "media-feature-no-missing-punctuation": null,
+    "no-empty-source": null,
+    "rule-nested-empty-line-before": null,
+    "rule-non-nested-empty-line-before": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "slotted",
+          "host"
+        ]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": [
+          "content",
+          "shadow",
+          "slotted"
+        ]
+      }
+    ],
+    "order/properties-order": [
+      "position",
+      "z-index",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "display",
+      "visibility",
+      "opacity",
+      "flex",
+      "float",
+      "box-sizing",
+      "width",
+      "min-width",
+      "max-width",
+      "height",
+      "min-height",
+      "max-height",
+      "padding",
+      "padding-top",
+      "padding-right",
+      "padding-bottom",
+      "padding-left",
+      "overflow",
+      "overflow-x",
+      "overflow-y",
+      "border",
+      "border-top",
+      "border-right",
+      "border-bottom",
+      "border-left",
+      "margin",
+      "margin-top",
+      "margin-right",
+      "margin-bottom",
+      "margin-left",
+      "background",
+      "background-image",
+      "background-position",
+      "background-position-x",
+      "background-position-y",
+      "background-size",
+      "background-repeat",
+      "color",
+      "font",
+      "font-family",
+      "font-size",
+      "text-align",
+      "list-style",
+      "filter",
+      "transform",
+      "transition",
+      "animation"
+    ]
+  }
+}
