@@ -16,8 +16,10 @@ A Web Component to show an EU Energy Label
 ```
 -->
 ```html
-<eu-energy-label efficiency-classes="A+++,A++,A+,A,B,C,D,E,F,G"
-                 selected-class="A++">
+<div style="width:350px">
+  <eu-energy-label efficiency-classes="A+++,A++,A+,A,B,C,D,E,F,G"
+                   selected-class="A++">
+</div>
 ```
 
 ## Contributing
