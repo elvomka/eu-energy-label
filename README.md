@@ -4,7 +4,7 @@ A (vanilla) Web Component to show an EU Energy Label.
 
 ## Demo
 
-Example of a "Directive 2010/30/EU" label:
+Example how to create a "Directive 2010/30/EU" energy label (colors need adjustment, see next demo):
 <!--
 ```
 <custom-element-demo>
@@ -24,27 +24,7 @@ Example of a "Directive 2010/30/EU" label:
 </div>
 ```
 
-Example of arbitrary label content:
-<!--
-```
-<custom-element-demo>
-  <template>
-    <script src="../webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="eu-energy-label.html">
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
-```html
-<div style="width:300px">
-  <eu-energy-label efficiency-classes="Use,any,labels,you,like"
-                   selected-class="any">
-  </eu-energy-label>
-</div>
-```
-
-Example of coloring the labels:
+Example of of arbitrary label content and using the CSS custom properties:
 <!--
 ```
 <custom-element-demo>
@@ -62,7 +42,7 @@ Example of coloring the labels:
     eu-energy-label {
       --efficiency-class-background-1: #0f0;
       --efficiency-class-background-2: #ff0;
-      --efficiency-class-background-3: #f00;
+      --efficiency-class-background-3: linear-gradient(#f00, #000);
     }
   </style>
   <eu-energy-label efficiency-classes="green,yellow,red"
@@ -72,9 +52,23 @@ Example of coloring the labels:
 ```
 ## Usage
 
+In order to use the `eu-energy-label`, you need to configure two parameters:
+
+* efficiency classes: The available energy efficiency classes to display
+* selected class: The selected (active) energy efficiency class to highlight
+
+These parameters can either be set via attribute- or property-value on the `eu-energy-label` instance.
+
+
 ### Attributes and properties
 
+To configure the available 'efficiency classes', use either the `efficiency-classes` attribute or the `efficiencyClasses` property and pass it a comma-separated list of labels for the efficiency classes you want to display. The order of the items in the comma-separated list will go from the top to the bottom of the efficiency scale.
+
+To configure the 'selected class' that will be highlighted, use the `selected-class` attribute or the `selectedClass` property and pass it a value that also exists in the 'efficiency classes' list.
+
 ### CSS custom properties
+
+The webcomponent exposes a number of CSS custom properties (variables) which allow to customize the look of the rendered energy efficiency label. For details, please have a look at the top of the file `eu-energy-label.html`.
 
 ## Contributing
 
