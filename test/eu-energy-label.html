@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>eu-energy-label</title>
+
+  <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
+
+  <!-- Import the element to test -->
+  <link rel="import" href="../eu-energy-label.html">
+</head>
+
+<body>
+  <test-fixture id="no-attributes">
+    <template>
+      <eu-energy-label></eu-energy-label>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="only-efficiency-classes">
+    <template>
+      <eu-energy-label efficiency-classes="foo,bar,baz,spam,egg"></eu-energy-label>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="only-selected-class">
+    <template>
+      <eu-energy-label selected-class="foo"></eu-energy-label>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="all-attributes">
+    <template>
+      <eu-energy-label efficiency-classes="foo,bar,baz,spam,egg"
+                       selected-class="foo">
+      </eu-energy-label>
+    </template>
+  </test-fixture>
+
+  <script>
+    /* global suite,fixture,test,assert */
+
+    suite('no-attributes', function() {
+      'use strict';
+
+      test('custom-element upgrade', function() {
+        const element = fixture('no-attributes');
+        assert.isDefined(element.selectedClass, 'Upgraded element has "selectedClass" property');
+      });
+
+      test('set efficiencyClasses property only', function() {
+        const element = fixture('no-attributes');
+        const efficiencyClasses = ['foo', 'bar', 'baz', 'spam', 'egg'];
+        element.efficiencyClasses = efficiencyClasses.join(',');
+        const containerElement = element.shadowRoot.querySelector('#efficiency-class-container');
+        const childNodes = containerElement.childNodes;
+        assert(efficiencyClasses.length === childNodes.length,
+          'Number of efficiencyClasses corresponds to number of childNodes');
+
+        efficiencyClasses.forEach((efficiencyClass, idx) => {
+          assert(efficiencyClass === childNodes[idx].firstChild.textContent,
+            'Efficiency class label rendered to span element');
+        });
+
+        const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
+        assert(selectedElement.classList.contains('hidden'),
+          'When no selection was set, the selectedElement is hidden');
+      });
+
+      test('set selectedClass property only', function() {
+        const element = fixture('no-attributes');
+        element.selectedClass = 'foo';
+        const containerElement = element.shadowRoot.querySelector('#efficiency-class-container');
+        const childNodes = containerElement.childNodes;
+        assert(childNodes.length === 0,
+          'Whithout setting efficiencyClasses, no efficiency classes are displayed');
+
+        const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
+        assert(selectedElement.classList.contains('hidden'),
+          'When selection was set, but no efficiencyClasses exist, the selectedElement is hidden');
+      });
+
+      test('set selectedClass property then efficiencyClasses property', function() {
+        const element = fixture('no-attributes');
+        element.selectedClass = 'foo';
+        const containerElement = element.shadowRoot.querySelector('#efficiency-class-container');
+        const childNodes = containerElement.childNodes;
+        assert(childNodes.length === 0,
+          'Whithout setting efficiencyClasses, no efficiency classes are displayed');
+
+        const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
+        assert(selectedElement.classList.contains('hidden'),
+          'When selection was set, but no efficiencyClasses exist, the selectedElement is hidden');
+
+        const efficiencyClasses = ['foo', 'bar'];
+        element.efficiencyClasses = efficiencyClasses.join(',');
+        assert(efficiencyClasses.length === childNodes.length,
+          'Number of efficiencyClasses corresponds to number of childNodes');
+
+        assert(!selectedElement.classList.contains('hidden'),
+          'When selection was set, and efficiencyClasses exist, the selectedElement is not hidden');
+
+        assert(selectedElement.firstChild.textContent === element.selectedClass,
+          'The selectedElement span contains the text of the selectedElement');
+      });
+
+      test('set efficiencyClasses property then selectedClass property', function() {
+        const element = fixture('no-attributes');
+        const efficiencyClasses = ['foo', 'bar', 'baz', 'spam', 'egg'];
+        element.efficiencyClasses = efficiencyClasses.join(',');
+        const containerElement = element.shadowRoot.querySelector('#efficiency-class-container');
+        const childNodes = containerElement.childNodes;
+        assert(efficiencyClasses.length === childNodes.length,
+          'Number of efficiencyClasses corresponds to number of childNodes');
+
+        efficiencyClasses.forEach((efficiencyClass, idx) => {
+          assert(efficiencyClass === childNodes[idx].firstChild.textContent,
+            'Efficiency class label rendered to span element');
+        });
+
+        const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
+        assert(selectedElement.classList.contains('hidden'),
+          'When no selection was set, the selectedElement is hidden');
+
+        element.selectedClass = 'foo';
+        assert(!selectedElement.classList.contains('hidden'),
+          'When selection was set, the selectedElement is no longer hidden');
+
+        assert(selectedElement.firstChild.textContent === element.selectedClass,
+          'The selectedElement span contains the text of the selectedElement');
+      });
+    });
+  </script>
+</body>
+
+</html>

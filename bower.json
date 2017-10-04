@@ -8,8 +8,10 @@
   "main": "eu-energy-label.html",
   "keywords": [
     "web-component",
+    "web component",
     "eu",
     "energy",
+    "efficiency",
     "label"
   ],
   "license": "MIT",

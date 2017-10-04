@@ -1,6 +1,6 @@
 # eu-energy-label
 
-A Web Component to show an EU Energy Label
+A (vanilla) Web Component to show an EU Energy Label.
 
 ## Demo
 
@@ -8,7 +8,7 @@ A Web Component to show an EU Energy Label
 ```
 <custom-element-demo>
   <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../webcomponentsjs/webcomponents-loader.js"></script>
     <link rel="import" href="eu-energy-label.html">
     <next-code-block></next-code-block>
   </template>
@@ -27,7 +27,7 @@ A Web Component to show an EU Energy Label
 ```
 <custom-element-demo>
   <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../webcomponentsjs/webcomponents-loader.js"></script>
     <link rel="import" href="eu-energy-label.html">
     <next-code-block></next-code-block>
   </template>
@@ -41,6 +41,12 @@ A Web Component to show an EU Energy Label
   </eu-energy-label>
 </div>
 ```
+
+## Usage
+
+### Attributes and properties
+
+### CSS custom properties
 
 ## Contributing
 

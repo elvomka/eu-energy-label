@@ -1,0 +1,41 @@
+{
+  "name": "eu-energy-label",
+  "version": "1.0.0",
+  "description": "A Web Component to show an EU Energy Label",
+  "author": "elvomka <lkdeatour-github@yahoo.de>",
+  "license": "MIT",
+  "keywords": [
+    "eu",
+    "web-component",
+    "energy",
+    "efficiency",
+    "label"
+  ],
+  "homepage": "https://github.com/elvomka/eu-energy-label#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvomka/eu-energy-label.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elvomka/eu-energy-label/issues"
+  },
+  "main": "eu-energy-label.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prepush": "npm run lint && npm run test",
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "cross-env-shell NO_PROXY=localhost,127.0.0.1 wct"
+  },
+  "devDependencies": {
+    "bower": "^1.8.2",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.8.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-html": "^3.2.2",
+    "husky": "^0.14.3",
+    "web-component-tester": "^6.3.0"
+  }
+}
