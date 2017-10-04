@@ -1,6 +1,5 @@
 {
   "name": "eu-energy-label",
-  "version": "1.0.0",
   "description": "A Web Component to show an EU Energy Label",
   "author": "elvomka <lkdeatour-github@yahoo.de>",
   "license": "MIT",
