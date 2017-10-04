@@ -148,6 +148,27 @@
             'Efficiency class label rendered to span element');
         });
       });
+
+      test('change selectedClass property', function() {
+        const element = fixture('all-attributes');
+        element.selectedClass = 'foo';
+
+        const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
+        assert(!selectedElement.classList.contains('hidden'),
+          'When selection was set, the selectedElement is no longer hidden');
+        assert(selectedElement.firstChild.textContent === 'foo',
+          'The selectedElement span contains the text of the selectedElement');
+
+        element.selectedClass = 'bar';
+        assert(!selectedElement.classList.contains('hidden'),
+          'When selection was set, the selectedElement is no longer hidden');
+        assert(selectedElement.firstChild.textContent === 'bar',
+          'The selectedElement span contains the text of the selectedElement');
+
+        element.selectedClass = 'does_not_exist';
+        assert(selectedElement.classList.contains('hidden'),
+          'When selection was set, the selectedElement is no longer hidden');
+      });
     });
   </script>
 </body>
