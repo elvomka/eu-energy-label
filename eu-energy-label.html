@@ -257,20 +257,10 @@
         return;
       }
       if (name === 'efficiency-classes') {
-        const html = newValue.split(',').map((efficiencyClass, idx) =>
-          `<div class="efficiency-class"><span>${efficiencyClass.trim()}</span></div>`
-        ).join('');
-        this.shadowRoot.getElementById('efficiency-class-container').innerHTML = html;
+        this.__renderEfficiencyClasses();
+        this.__renderSelectedClass();
       } else if (name === 'selected-class') {
-        const efficiencyClasses = this.efficiencyClasses.split(',');
-        const idx = efficiencyClasses.indexOf(newValue);
-        const selectedElement = this.shadowRoot.getElementById('selected-efficiency');
-        if (idx === -1) {
-          selectedElement.className = 'hidden';
-        } else {
-          selectedElement.className = `selected-efficiency selected-efficiency-${idx + 1}`;
-          selectedElement.firstChild.textContent = newValue;
-        }
+        this.__renderSelectedClass();
       }
     }
 
@@ -310,6 +300,46 @@
      */
     get selectedClass() {
       return this.getAttribute('selected-class');
+    }
+
+    /**
+     * Render the efficiency classes based on the `efficiencyClasses` property (or the
+     * `efficiency-classes` attribute).
+     *
+     * @private
+     * @return {void}
+     */
+    __renderEfficiencyClasses() {
+      const efficiencyClasses = this.efficiencyClasses.split(',');
+      const html = efficiencyClasses.map((efficiencyClass, idx) =>
+        `<div class="efficiency-class"><span>${efficiencyClass.trim()}</span></div>`
+      ).join('');
+      this.shadowRoot.getElementById('efficiency-class-container').innerHTML = html;
+    }
+
+    /**
+     * Render the selected efficiency class based on the `selectedClass` property (or the
+     * `selected-class` attribute).
+     *
+     * @private
+     * @return {void}
+     */
+    __renderSelectedClass() {
+      const selectedElement = this.shadowRoot.getElementById('selected-efficiency');
+      if (!this.efficiencyClasses || !this.selectedClass) {
+        selectedElement.className = 'hidden';
+        return;
+      }
+
+      const efficiencyClasses = this.efficiencyClasses.split(',');
+      const selectedClass = this.selectedClass;
+      const idx = efficiencyClasses.indexOf(selectedClass);
+      if (idx === -1) {
+        selectedElement.className = 'hidden';
+      } else {
+        selectedElement.className = `selected-efficiency selected-efficiency-${idx + 1}`;
+        selectedElement.firstChild.textContent = selectedClass;
+      }
     }
   });
 </script>
