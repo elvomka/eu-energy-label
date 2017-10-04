@@ -4,6 +4,7 @@ A (vanilla) Web Component to show an EU Energy Label.
 
 ## Demo
 
+Example of a "Directive 2010/30/EU" label:
 <!--
 ```
 <custom-element-demo>
@@ -23,6 +24,7 @@ A (vanilla) Web Component to show an EU Energy Label.
 </div>
 ```
 
+Example of arbitrary label content:
 <!--
 ```
 <custom-element-demo>
@@ -42,6 +44,32 @@ A (vanilla) Web Component to show an EU Energy Label.
 </div>
 ```
 
+Example of coloring the labels:
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="eu-energy-label.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<div style="width:300px">
+  <style type="text/css" scoped>
+    eu-energy-label {
+      --efficiency-class-background-1: #0f0;
+      --efficiency-class-background-2: #ff0;
+      --efficiency-class-background-3: #f00;
+    }
+  </style>
+  <eu-energy-label efficiency-classes="green,yellow,red"
+                   selected-class="green">
+  </eu-energy-label>
+</div>
+```
 ## Usage
 
 ### Attributes and properties
