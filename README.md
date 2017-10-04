@@ -42,9 +42,9 @@ Example of of arbitrary label content and using the CSS custom properties:
 <div style="width:300px">
   <style type="text/css" scoped>
     eu-energy-label {
-      --efficiency-class-background-1: #0f0;
-      --efficiency-class-background-2: #ff0;
-      --efficiency-class-background-3: linear-gradient(#f00, #000);
+      --efficiency-class-background-1: linear-gradient(#9aff9a, #0f0);
+      --efficiency-class-background-2: linear-gradient(#ffff9a, #ff0);
+      --efficiency-class-background-3: linear-gradient(#d6485b, #f00);
     }
   </style>
   <eu-energy-label efficiency-classes="green,yellow,red"
