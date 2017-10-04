@@ -152,7 +152,6 @@
       test('change selectedClass property', function() {
         const element = fixture('all-attributes');
         element.selectedClass = 'foo';
-
         const selectedElement = element.shadowRoot.querySelector('#selected-efficiency');
         assert(!selectedElement.classList.contains('hidden'),
           'When selection was set, the selectedElement is no longer hidden');
