@@ -2,6 +2,8 @@
 
 A (vanilla) Web Component to show an EU Energy Label.
 
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/elvomka/eu-energy-label)
+
 ## Demo
 
 Example how to create a "Directive 2010/30/EU" energy label (colors need adjustment, see next demo):
