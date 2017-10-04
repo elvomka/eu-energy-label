@@ -21,18 +21,6 @@
     </template>
   </test-fixture>
 
-  <test-fixture id="only-efficiency-classes">
-    <template>
-      <eu-energy-label efficiency-classes="foo,bar,baz,spam,egg"></eu-energy-label>
-    </template>
-  </test-fixture>
-
-  <test-fixture id="only-selected-class">
-    <template>
-      <eu-energy-label selected-class="foo"></eu-energy-label>
-    </template>
-  </test-fixture>
-
   <test-fixture id="all-attributes">
     <template>
       <eu-energy-label efficiency-classes="foo,bar,baz,spam,egg"
@@ -132,6 +120,33 @@
 
         assert(selectedElement.firstChild.textContent === element.selectedClass,
           'The selectedElement span contains the text of the selectedElement');
+      });
+    });
+
+    suite('all-attributes', function() {
+      'use strict';
+
+      test('change efficiencyClasses property', function() {
+        const element = fixture('all-attributes');
+        const containerElement = element.shadowRoot.querySelector('#efficiency-class-container');
+        const efficiencyClasses = element.efficiencyClasses.split(',');
+        assert(efficiencyClasses.length > 0,
+          'all-attributes fixture already contains efficiency classes');
+
+        const childNodes = containerElement.childNodes;
+        efficiencyClasses.forEach((efficiencyClass, idx) => {
+          assert(efficiencyClass === childNodes[idx].firstChild.textContent,
+            'Efficiency class label rendered to span element');
+        });
+
+        const newEfficiencyClases = efficiencyClasses.map((efficiencyClass) =>
+          efficiencyClass + '_changed');
+
+        element.efficiencyClasses = newEfficiencyClases;
+        newEfficiencyClases.forEach((efficiencyClass, idx) => {
+          assert(efficiencyClass === childNodes[idx].firstChild.textContent,
+            'Efficiency class label rendered to span element');
+        });
       });
     });
   </script>
