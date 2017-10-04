@@ -45,6 +45,7 @@ Example of of arbitrary label content and using the CSS custom properties:
       --efficiency-class-background-1: linear-gradient(#9aff9a, #0f0);
       --efficiency-class-background-2: linear-gradient(#ffff9a, #ff0);
       --efficiency-class-background-3: linear-gradient(#d6485b, #f00);
+      --selected-efficiency-background: linear-gradient(#eee, #bbb);
     }
   </style>
   <eu-energy-label efficiency-classes="green,yellow,red"
