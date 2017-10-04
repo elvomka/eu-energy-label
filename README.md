@@ -21,6 +21,18 @@ A Web Component to show an EU Energy Label
                    selected-class="A++">
 </div>
 ```
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="eu-energy-label.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
 <div style="width:300px">
   <eu-energy-label efficiency-classes="Use,any,labels,you,like"
