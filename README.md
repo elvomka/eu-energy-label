@@ -19,6 +19,7 @@ A Web Component to show an EU Energy Label
 <div style="width:300px">
   <eu-energy-label efficiency-classes="A+++,A++,A+,A,B,C,D"
                    selected-class="A++">
+  </eu-energy-label>
 </div>
 ```
 
@@ -37,6 +38,7 @@ A Web Component to show an EU Energy Label
 <div style="width:300px">
   <eu-energy-label efficiency-classes="Use,any,labels,you,like"
                    selected-class="any">
+  </eu-energy-label>
 </div>
 ```
 
